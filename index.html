@@ -422,6 +422,159 @@
       100% { transform: translateX(-50%); }
     }
 
+    /* ===== NATA ABOUT ===== */
+    #nata-about {
+      padding: var(--spacing-xl) 0;
+      background: var(--iron);
+    }
+
+    .nata-intro {
+      max-width: 800px;
+      margin: 0 auto var(--spacing-lg);
+      text-align: center;
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+
+    .nata-intro-lead {
+      font-family: var(--serif-jp);
+      font-size: clamp(22px, 3.5vw, 40px);
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--white);
+      margin-bottom: var(--spacing-md);
+    }
+    .nata-intro-lead em {
+      color: var(--red-bright);
+      font-style: normal;
+    }
+
+    .nata-intro-body {
+      font-family: var(--sans-jp);
+      font-size: clamp(13px, 1.4vw, 15px);
+      font-weight: 100;
+      line-height: 2.4;
+      color: var(--cream-dim);
+    }
+
+    .nata-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+
+    .nata-pillar {
+      padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
+      background: var(--iron-mid);
+      border-top: 2px solid transparent;
+      transition: border-color 0.4s ease, background 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .nata-pillar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 100%, rgba(139,26,26,0.06) 0%, transparent 70%);
+    }
+    .nata-pillar:hover {
+      border-color: var(--red);
+      background: var(--iron-soft);
+    }
+
+    .nata-pillar-num {
+      font-family: var(--serif-en);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(139,26,26,0.25);
+      line-height: 1;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .nata-pillar-label {
+      font-family: var(--sans-jp);
+      font-size: 10px;
+      font-weight: 100;
+      letter-spacing: 0.5em;
+      color: var(--red);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .nata-pillar-title {
+      font-family: var(--serif-jp);
+      font-size: clamp(20px, 2.5vw, 30px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .nata-pillar-body {
+      font-family: var(--sans-jp);
+      font-size: clamp(12px, 1.3vw, 14px);
+      font-weight: 100;
+      line-height: 2.3;
+      color: var(--cream-dim);
+      position: relative;
+      z-index: 1;
+    }
+    .nata-pillar-body strong {
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    .nata-voice {
+      max-width: 800px;
+      margin: var(--spacing-lg) auto 0;
+      padding: clamp(32px, 4vw, 56px) clamp(24px, 6vw, 80px);
+      background: rgba(139,26,26,0.07);
+      border: 1px solid rgba(139,26,26,0.2);
+      border-left: 3px solid var(--red);
+      text-align: left;
+      position: relative;
+    }
+
+    .nata-voice-label {
+      font-family: var(--serif-en);
+      font-size: 10px;
+      letter-spacing: 0.6em;
+      color: var(--red);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .nata-voice-text {
+      font-family: var(--serif-jp);
+      font-size: clamp(15px, 1.8vw, 20px);
+      font-weight: 200;
+      line-height: 2;
+      color: var(--cream);
+      font-style: normal;
+    }
+    .nata-voice-text em {
+      color: var(--red-bright);
+      font-style: normal;
+    }
+
+    .nata-voice-author {
+      display: block;
+      margin-top: 24px;
+      font-family: var(--sans-jp);
+      font-size: 11px;
+      font-weight: 100;
+      letter-spacing: 0.3em;
+      color: var(--cream-dim);
+    }
+
+    @media (max-width: 900px) {
+      .nata-pillars { grid-template-columns: 1fr; }
+    }
+
     /* ===== STORY SECTIONS ===== */
     .story-section {
       padding: var(--spacing-xl) 0;
@@ -1237,6 +1390,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#manifesto">物語</a></li>
+      <li><a href="#nata-about">鉈について</a></li>
       <li><a href="#process">工程</a></li>
       <li><a href="#products">製品</a></li>
       <li><a href="#craftspeople">職人</a></li>
@@ -1326,6 +1480,78 @@
       <span class="red-band-text">百年の鍛冶</span><div class="red-band-dot"></div>
     </div>
   </div>
+
+  <!-- ===== NATA: 鉈とは・四万十でなぜ必要か ===== -->
+  <section id="nata-about">
+    <div class="nata-intro reveal">
+      <span class="section-label-en">WHAT IS A NATA</span>
+      <h2 class="section-title-jp" style="margin-bottom: 1.5rem;">鉈を知らずして、<br>勝秀はわからない。</h2>
+      <p class="nata-intro-lead">
+        鉈は刀でも、包丁でもない。<br>
+        <em>山に生きる者の、もう一本の腕だ。</em>
+      </p>
+      <p class="nata-intro-body">
+        四万十には山がある。深い森がある。猟師がいる。林業師がいる。<br>
+        山を生業とする人々にとって、鉈なしに一日を生きることはできない。<br>
+        そしてこの地で百年、その鉈を打ち続けてきた鍛冶屋がある。
+      </p>
+    </div>
+
+    <div class="nata-pillars">
+
+      <div class="nata-pillar reveal delay-1">
+        <span class="nata-pillar-num">I</span>
+        <span class="nata-pillar-label">WHAT IS A NATA</span>
+        <h3 class="nata-pillar-title">鉈とは何か</h3>
+        <p class="nata-pillar-body">
+          鉈は、日本の山仕事に特化した<strong>刃物の一種</strong>だ。
+          包丁より重く、斧より繊細。
+          木を伐り、枝を払い、獲物を解体し、道を切り開く。<br><br>
+          山での作業のほぼすべてを、この一本がこなす。
+          「山の万能ナイフ」と言っていい——しかし、安物の万能ではいけない。
+          命がかかっているから。
+        </p>
+      </div>
+
+      <div class="nata-pillar reveal delay-2">
+        <span class="nata-pillar-num">II</span>
+        <span class="nata-pillar-label">WHY SHIMANTO</span>
+        <h3 class="nata-pillar-title">四万十で、<br>鉈が必要な理由</h3>
+        <p class="nata-pillar-body">
+          高知県四万十町は、山と川と森に囲まれた町だ。
+          林業、狩猟、農業——山と生きる人々が今も多く暮らす。<br><br>
+          かつてこの町に<strong>鍛冶屋が九軒</strong>あったのは、それだけ鉈の需要があったからだ。
+          山に入る者が一人いれば、鉈が一本いる。
+          それが、この地に鍛冶の火が灯り続けた理由だ。
+        </p>
+      </div>
+
+      <div class="nata-pillar reveal delay-3">
+        <span class="nata-pillar-num">III</span>
+        <span class="nata-pillar-label">WHY PRICE MATTERS</span>
+        <h3 class="nata-pillar-title">なぜ、<br>いい鉈が必要か</h3>
+        <p class="nata-pillar-body">
+          市販の安価な鉈は、一〜二年で刃がダメになる。
+          研いでも、折れる。重さのバランスが悪く、疲れる。<br><br>
+          土州勝秀の鉈は、<strong>数十年使える</strong>。
+          親から子へ、師匠から弟子へ受け継ぐ道具として打たれている。
+          最初の価格が高くとも、長い目で見れば最も安い選択だ——
+          そしてその一本が、山での命を守る。
+        </p>
+      </div>
+
+    </div>
+
+    <div class="nata-voice reveal" style="margin-left: clamp(24px, 6vw, 80px); margin-right: clamp(24px, 6vw, 80px);">
+      <span class="nata-voice-label">VOICE FROM THE FORGE</span>
+      <p class="nata-voice-text">
+        「鍛冶屋がなくなったら、この山の文化が途絶える。<br>
+        それが嫌で、<em>この火を絶やしたくない</em>と思っている。<br>
+        いい鉈を持つということは、山との向き合い方が変わるということだ。」
+      </p>
+      <span class="nata-voice-author">— 菊池 祐（三代目・土州勝秀）</span>
+    </div>
+  </section>
 
   <!-- ===== STORY 01: 鞘の極意 ===== -->
   <section class="story-section">
@@ -1765,6 +1991,7 @@
         <p class="footer-col-title">NAVIGATION</p>
         <ul class="footer-links">
           <li><a href="#manifesto">百年の哲学</a></li>
+          <li><a href="#nata-about">鉈について</a></li>
           <li><a href="#process">製作工程</a></li>
           <li><a href="#products">製品</a></li>
           <li><a href="#craftspeople">職人</a></li>
