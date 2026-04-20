@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>土州勝秀 | DOSHU KATSUHIDE — 百年の鉄と火</title>
+  <meta name="description" content="高知県四万十。山に生き、山に返る。日本刀の技法を継ぐ、百年の鉈鍛冶。土州勝秀 勝秀鍛冶屋。">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+JP:wght@100;300;400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== RESET & ROOT ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --iron:      #0e0c09;
+      --iron-mid:  #1c1710;
+      --iron-soft: #2e2820;
+      --iron-warm: #3d3428;
+      --red:       #8b1a1a;
+      --red-bright:#c41e1e;
+      --red-glow:  rgba(139,26,26,0.15);
+      --wood-dark: #4a3520;
+      --wood-mid:  #7a5c30;
+      --wood-light:#c4935a;
+      --wood-pale: #e8c98a;
+      --cream:     #f0e8d8;
+      --cream-dim: #d4c9b0;
+      --white:     #faf6ef;
+      --gold:      #b8862a;
+      --gold-light:#d4a84b;
+
+      --serif-jp: 'Noto Serif JP', serif;
+      --serif-en: 'Cormorant Garamond', serif;
+      --sans-jp:  'Noto Sans JP', sans-serif;
+
+      --spacing-xl: clamp(80px, 12vw, 160px);
+      --spacing-lg: clamp(48px, 8vw, 96px);
+      --spacing-md: clamp(24px, 4vw, 48px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--iron);
+      color: var(--cream);
+      font-family: var(--serif-jp);
+      line-height: 1.9;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ===== CUSTOM CURSOR ===== */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--red-bright);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+      mix-blend-mode: normal;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(196,30,30,0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s;
+    }
+    body:has(a:hover) .cursor,
+    body:has(button:hover) .cursor { width: 6px; height: 6px; }
+    body:has(a:hover) .cursor-ring,
+    body:has(button:hover) .cursor-ring { width: 60px; height: 60px; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--iron); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
+
+    /* ===== NOISE TEXTURE ===== */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px clamp(24px, 5vw, 80px);
+      transition: all 0.6s ease;
+    }
+    nav.scrolled {
+      background: rgba(14,12,9,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(139,26,26,0.2);
+      padding-top: 18px; padding-bottom: 18px;
+    }
+    .nav-logo {
+      font-family: var(--serif-jp);
+      font-size: clamp(13px, 1.5vw, 16px);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--cream);
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .nav-logo span {
+      display: block;
+      font-family: var(--serif-en);
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      color: var(--red);
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex; gap: 40px; list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--sans-jp);
+      font-size: 11px;
+      font-weight: 100;
+      letter-spacing: 0.4em;
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      height: 100svh; min-height: 700px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 110%, rgba(139,26,26,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 50% at 20% 50%, rgba(74,53,32,0.3) 0%, transparent 60%),
+        linear-gradient(180deg, #0a0806 0%, #1a1410 40%, #0e0c09 100%);
+    }
+
+    /* Animated forge sparks */
+    .sparks {
+      position: absolute; inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .spark {
+      position: absolute;
+      bottom: 30%;
+      width: 2px; height: 2px;
+      background: var(--red-bright);
+      border-radius: 50%;
+      box-shadow: 0 0 6px 2px var(--red-bright);
+      animation: spark-fly var(--dur, 2s) var(--delay, 0s) infinite;
+      opacity: 0;
+    }
+    @keyframes spark-fly {
+      0%   { transform: translate(0,0) scale(1); opacity: 1; }
+      60%  { opacity: 0.8; }
+      100% { transform: translate(var(--tx, 60px), var(--ty, -200px)) scale(0); opacity: 0; }
+    }
+
+    .hero-line {
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent 0%, var(--red) 40%, rgba(139,26,26,0.3) 70%, transparent 100%);
+      transform: translateX(-50%);
+      opacity: 0.4;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+    }
+
+    .hero-kana {
+      font-family: var(--sans-jp);
+      font-size: clamp(10px, 1.2vw, 13px);
+      font-weight: 100;
+      letter-spacing: 0.8em;
+      color: var(--red);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fade-up 1.2s 0.3s forwards ease-out;
+    }
+
+    .hero-title {
+      font-family: var(--serif-jp);
+      font-size: clamp(52px, 10vw, 140px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 8px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fade-up 1.4s 0.5s forwards ease-out;
+    }
+    .hero-title .red-char { color: var(--red-bright); }
+
+    .hero-subtitle-en {
+      font-family: var(--serif-en);
+      font-size: clamp(14px, 2vw, 22px);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.25em;
+      color: var(--cream-dim);
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fade-up 1.2s 0.8s forwards ease-out;
+    }
+
+    .hero-divider {
+      width: 1px; height: 80px;
+      background: linear-gradient(180deg, var(--red) 0%, transparent 100%);
+      margin: 48px auto;
+      opacity: 0;
+      animation: fade-up 1s 1.2s forwards ease-out;
+    }
+
+    .hero-tagline {
+      font-family: var(--serif-jp);
+      font-size: clamp(13px, 1.5vw, 16px);
+      font-weight: 200;
+      letter-spacing: 0.5em;
+      color: var(--cream-dim);
+      opacity: 0;
+      animation: fade-up 1s 1.4s forwards ease-out;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 48px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fade-in 1s 2s forwards;
+    }
+    .hero-scroll span {
+      font-family: var(--serif-en);
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      color: var(--red);
+    }
+    .scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(180deg, var(--red) 0%, transparent 100%);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+    @keyframes scroll-pulse {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50%       { transform: scaleY(0.5); opacity: 0.4; }
+    }
+
+    .hero-year {
+      position: absolute;
+      right: clamp(24px, 5vw, 80px);
+      bottom: 48px;
+      font-family: var(--serif-en);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: rgba(196,147,90,0.5);
+      writing-mode: vertical-rl;
+    }
+
+    @keyframes fade-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+      to { opacity: 1; }
+    }
+
+    /* ===== SECTIONS SHARED ===== */
+    section { position: relative; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+
+    /* ===== MANIFESTO ===== */
+    #manifesto {
+      padding: var(--spacing-xl) 0;
+      background: var(--iron-mid);
+    }
+
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+
+    .manifesto-label {
+      font-family: var(--serif-en);
+      font-size: 11px;
+      letter-spacing: 0.6em;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    .manifesto-jp-title {
+      font-family: var(--serif-jp);
+      font-size: clamp(28px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      writing-mode: vertical-rl;
+      height: clamp(200px, 30vw, 380px);
+    }
+
+    .manifesto-text {
+      padding-top: 20px;
+    }
+
+    .manifesto-lead {
+      font-family: var(--serif-jp);
+      font-size: clamp(20px, 3vw, 36px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--white);
+      margin-bottom: var(--spacing-md);
+    }
+    .manifesto-lead em {
+      color: var(--red-bright);
+      font-style: normal;
+    }
+
+    .manifesto-body {
+      font-family: var(--sans-jp);
+      font-size: clamp(13px, 1.4vw, 15px);
+      font-weight: 100;
+      line-height: 2.2;
+      color: var(--cream-dim);
+      max-width: 600px;
+    }
+
+    .manifesto-stat-row {
+      display: flex; gap: 60px;
+      margin-top: var(--spacing-md);
+      padding-top: var(--spacing-md);
+      border-top: 1px solid rgba(196,147,90,0.15);
+    }
+    .stat { display: flex; flex-direction: column; gap: 6px; }
+    .stat-num {
+      font-family: var(--serif-en);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--sans-jp);
+      font-size: 10px;
+      font-weight: 100;
+      letter-spacing: 0.4em;
+      color: var(--cream-dim);
+    }
+
+    /* ===== RED BAND ===== */
+    .red-band {
+      background: var(--red);
+      padding: 28px 0;
+      overflow: hidden;
+    }
+    .red-band-inner {
+      display: flex; align-items: center;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+    .red-band-text {
+      font-family: var(--serif-en);
+      font-size: 13px;
+      letter-spacing: 0.5em;
+      color: rgba(250,246,239,0.6);
+      padding: 0 48px;
+    }
+    .red-band-dot {
+      width: 4px; height: 4px;
+      background: rgba(250,246,239,0.4);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== STORY SECTIONS ===== */
+    .story-section {
+      padding: var(--spacing-xl) 0;
+    }
+    .story-section:nth-child(even) {
+      background: rgba(28,23,16,0.6);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .story-grid.reverse { direction: rtl; }
+    .story-grid.reverse > * { direction: ltr; }
+
+    .story-number {
+      font-family: var(--serif-en);
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 300;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(139,26,26,0.3);
+      margin-bottom: -20px;
+      display: block;
+    }
+
+    .story-label {
+      font-family: var(--sans-jp);
+      font-size: 10px;
+      font-weight: 100;
+      letter-spacing: 0.6em;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+
+    .story-title {
+      font-family: var(--serif-jp);
+      font-size: clamp(24px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--white);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .story-body {
+      font-family: var(--sans-jp);
+      font-size: clamp(13px, 1.4vw, 15px);
+      font-weight: 100;
+      line-height: 2.4;
+      color: var(--cream-dim);
+    }
+    .story-body strong {
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    .story-visual {
+      position: relative;
+    }
+
+    /* Illustrated visuals using pure CSS */
+    .visual-frame {
+      aspect-ratio: 4/5;
+      background: var(--iron-soft);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(196,147,90,0.1);
+    }
+    .visual-frame::before {
+      content: '';
+      position: absolute; inset: 0;
+    }
+
+    /* Sheath visual */
+    .visual-sheath {
+      background:
+        linear-gradient(135deg, #2a1f14 0%, #1a1208 100%);
+    }
+    .visual-sheath::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 10%; bottom: 10%;
+      width: 18%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, #6b4f2a 0%, #4a3520 30%, #8b6340 60%, #3d2a18 100%);
+      border-radius: 4px 4px 12px 12px;
+      box-shadow:
+        inset -4px 0 12px rgba(0,0,0,0.5),
+        inset 4px 0 8px rgba(196,147,90,0.1),
+        8px 0 24px rgba(0,0,0,0.4);
+    }
+    .sheath-detail {
+      position: absolute;
+      left: 50%; top: 8%;
+      width: 20%;
+      height: 6px;
+      transform: translateX(-50%);
+      background: var(--wood-mid);
+      border-radius: 2px;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    .sheath-lines {
+      position: absolute;
+      left: 50%; top: 20%; bottom: 20%;
+      width: 18%;
+      transform: translateX(-50%);
+      z-index: 3;
+      background: repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 8px,
+        rgba(0,0,0,0.15) 8px,
+        rgba(0,0,0,0.15) 9px
+      );
+    }
+
+    /* Red groove visual */
+    .visual-red-groove {
+      background:
+        linear-gradient(160deg, #1a1208 0%, #0e0c09 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .blade-shape {
+      position: absolute;
+      left: 10%; right: 30%; top: 15%; bottom: 15%;
+      background: linear-gradient(135deg, #3a3530 0%, #5a5450 30%, #2e2a24 100%);
+      clip-path: polygon(0 10%, 85% 0, 100% 50%, 85% 100%, 0 90%);
+      box-shadow: inset -8px 0 20px rgba(0,0,0,0.6);
+    }
+    .blade-groove {
+      position: absolute;
+      left: 10%; right: 35%; top: 45%; bottom: 45%;
+      background: var(--red-bright);
+      clip-path: polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%);
+      box-shadow: 0 0 20px 4px rgba(196,30,30,0.6), 0 0 60px 10px rgba(196,30,30,0.2);
+      animation: red-pulse 3s ease-in-out infinite;
+    }
+    @keyframes red-pulse {
+      0%, 100% { box-shadow: 0 0 20px 4px rgba(196,30,30,0.6), 0 0 60px 10px rgba(196,30,30,0.2); }
+      50%       { box-shadow: 0 0 30px 8px rgba(196,30,30,0.9), 0 0 80px 20px rgba(196,30,30,0.3); }
+    }
+
+    /* Stamp visual */
+    .visual-stamp {
+      background: linear-gradient(160deg, #1c1710 0%, #0e0c09 100%);
+    }
+    .stamp-marks {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .stamp-char {
+      font-family: var(--serif-jp);
+      font-size: clamp(28px, 5vw, 56px);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      opacity: 0;
+      animation: stamp-appear 0.3s var(--sd, 0s) forwards;
+    }
+    .stamp-char.red { color: var(--red-bright); }
+    @keyframes stamp-appear {
+      0%  { opacity: 0; transform: scale(1.5); }
+      30% { opacity: 1; transform: scale(0.95); }
+      100%{ opacity: 1; transform: scale(1); }
+    }
+
+    /* Handle visual */
+    .visual-handle {
+      background: linear-gradient(160deg, #1a1208 0%, #0e0c09 100%);
+    }
+    .handle-shape {
+      position: absolute;
+      left: 30%; right: 30%; top: 15%; bottom: 15%;
+      background: linear-gradient(90deg, #3d2810 0%, #6b4520 30%, #8b6030 60%, #4a3018 100%);
+      border-radius: 6px 6px 20px 20px;
+      box-shadow:
+        inset 4px 0 12px rgba(255,200,100,0.05),
+        inset -4px 0 12px rgba(0,0,0,0.5),
+        0 8px 32px rgba(0,0,0,0.6);
+      background-image:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px, transparent 3px,
+          rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px
+        ),
+        linear-gradient(90deg, #3d2810 0%, #6b4520 30%, #8b6030 60%, #4a3018 100%);
+    }
+
+    /* ===== PROCESS ===== */
+    #process {
+      padding: var(--spacing-xl) 0;
+      background: var(--iron);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .section-label-en {
+      font-family: var(--serif-en);
+      font-size: 11px;
+      letter-spacing: 0.7em;
+      color: var(--red);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .section-title-jp {
+      font-family: var(--serif-jp);
+      font-size: clamp(28px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .section-subtitle {
+      font-family: var(--sans-jp);
+      font-size: 13px;
+      font-weight: 100;
+      letter-spacing: 0.3em;
+      color: var(--cream-dim);
+      margin-top: 16px;
+    }
+
+    .process-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--red) 20%, var(--red) 80%, transparent 100%);
+      opacity: 0.4;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+    }
+    .process-step-num {
+      width: 56px; height: 56px;
+      border: 1px solid var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: var(--serif-en);
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--red);
+      background: var(--iron);
+      position: relative; z-index: 1;
+      transition: all 0.4s ease;
+    }
+    .process-step:hover .process-step-num {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 0 20px rgba(139,26,26,0.5);
+    }
+    .process-step-title {
+      font-family: var(--serif-jp);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .process-step-desc {
+      font-family: var(--sans-jp);
+      font-size: 11px;
+      font-weight: 100;
+      line-height: 2;
+      color: var(--cream-dim);
+    }
+
+    /* ===== PRODUCTS ===== */
+    #products {
+      padding: var(--spacing-xl) 0;
+      background: var(--iron-mid);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(24px, 4vw, 60px);
+      margin-top: var(--spacing-lg);
+    }
+
+    .product-card {
+      position: relative;
+      background: var(--iron-soft);
+      border: 1px solid rgba(196,147,90,0.08);
+      overflow: hidden;
+      transition: transform 0.5s ease, border-color 0.5s ease;
+      cursor: none;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(139,26,26,0.4);
+    }
+    .product-card::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover::before { transform: scaleX(1); }
+
+    .product-visual {
+      height: clamp(200px, 30vw, 320px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Kennaata visual */
+    .pv-ken {
+      background: linear-gradient(160deg, #1a1510 0%, #0e0c09 100%);
+    }
+    .kennaata-blade {
+      position: absolute;
+      left: 15%; right: 15%; top: 20%; bottom: 30%;
+      background: linear-gradient(160deg, #5a5450 0%, #3a3530 40%, #6a6460 70%, #2e2a24 100%);
+      clip-path: polygon(0 20%, 70% 0, 90% 10%, 95% 50%, 90% 90%, 70% 100%, 0 80%);
+      box-shadow:
+        inset -6px 0 16px rgba(0,0,0,0.6),
+        0 4px 20px rgba(0,0,0,0.8);
+    }
+    .kennaata-groove {
+      position: absolute;
+      left: 15%; right: 40%; top: 44%; bottom: 46%;
+      background: var(--red);
+      clip-path: polygon(0 0, 60% 0, 75% 50%, 60% 100%, 0 100%);
+      box-shadow: 0 0 12px rgba(196,30,30,0.8);
+    }
+    .kennaata-handle {
+      position: absolute;
+      right: 5%; left: 60%; top: 30%; bottom: 30%;
+      background: linear-gradient(90deg, #3d2810 0%, #6b4520 50%, #3d2810 100%);
+      border-radius: 4px;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+    }
+    .kennaata-sheath {
+      position: absolute;
+      left: 15%; right: 20%; top: 65%; bottom: 10%;
+      background: linear-gradient(160deg, #6b4f2a 0%, #4a3520 100%);
+      border-radius: 4px 4px 8px 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+
+    /* Koshinata visual */
+    .pv-koshi {
+      background: linear-gradient(160deg, #1a1208 0%, #0e0c09 100%);
+    }
+
+    .product-info {
+      padding: clamp(24px, 4vw, 48px);
+    }
+    .product-type {
+      font-family: var(--sans-jp);
+      font-size: 10px;
+      font-weight: 100;
+      letter-spacing: 0.6em;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .product-name {
+      font-family: var(--serif-jp);
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .product-name-en {
+      font-family: var(--serif-en);
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream-dim);
+      margin-bottom: 20px;
+    }
+    .product-desc {
+      font-family: var(--sans-jp);
+      font-size: 12px;
+      font-weight: 100;
+      line-height: 2.2;
+      color: var(--cream-dim);
+      margin-bottom: 28px;
+    }
+    .product-meta {
+      display: flex; gap: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(196,147,90,0.1);
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .meta-label {
+      font-family: var(--sans-jp);
+      font-size: 9px;
+      font-weight: 100;
+      letter-spacing: 0.4em;
+      color: var(--red);
+    }
+    .meta-value {
+      font-family: var(--serif-jp);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    .product-note {
+      grid-column: 1 / -1;
+      padding: clamp(32px, 4vw, 48px);
+      background: rgba(139,26,26,0.06);
+      border: 1px solid rgba(139,26,26,0.15);
+      text-align: center;
+    }
+    .product-note p {
+      font-family: var(--serif-jp);
+      font-size: clamp(14px, 1.8vw, 18px);
+      font-weight: 200;
+      line-height: 2;
+      color: var(--cream-dim);
+    }
+    .product-note strong {
+      color: var(--red-bright);
+      font-weight: 400;
+    }
+
+    /* ===== CRAFTSPEOPLE ===== */
+    #craftspeople {
+      padding: var(--spacing-xl) 0;
+      background: var(--iron);
+    }
+
+    .craftspeople-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(24px, 4vw, 48px);
+      margin-top: var(--spacing-lg);
+    }
+
+    .crafter-card {
+      position: relative;
+      text-align: center;
+      padding: clamp(32px, 4vw, 48px) clamp(20px, 3vw, 32px);
+      border: 1px solid rgba(196,147,90,0.08);
+      background: rgba(28,23,16,0.4);
+      transition: border-color 0.4s;
+    }
+    .crafter-card:hover { border-color: rgba(139,26,26,0.3); }
+
+    .crafter-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 1px solid rgba(139,26,26,0.3);
+      margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--iron-soft);
+      font-family: var(--serif-jp);
+      font-size: 28px;
+      color: var(--gold-light);
+    }
+
+    .crafter-gen {
+      font-family: var(--serif-en);
+      font-size: 10px;
+      letter-spacing: 0.6em;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .crafter-name {
+      font-family: var(--serif-jp);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .crafter-role {
+      font-family: var(--sans-jp);
+      font-size: 11px;
+      font-weight: 100;
+      letter-spacing: 0.3em;
+      color: var(--cream-dim);
+      margin-bottom: 20px;
+    }
+    .crafter-quote {
+      font-family: var(--serif-jp);
+      font-size: 13px;
+      font-weight: 200;
+      font-style: normal;
+      line-height: 2;
+      color: var(--cream-dim);
+      position: relative;
+      padding: 20px 0;
+    }
+    .crafter-quote::before, .crafter-quote::after {
+      content: '';
+      display: block;
+      width: 20px; height: 1px;
+      background: rgba(139,26,26,0.4);
+      margin: 12px auto;
+    }
+
+    /* ===== MATERIALS ===== */
+    #materials {
+      padding: var(--spacing-xl) 0;
+      background: var(--iron-mid);
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: var(--spacing-lg);
+    }
+
+    .material-tile {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 24px;
+      transition: all 0.4s ease;
+    }
+    .material-tile:hover { background: rgba(139,26,26,0.1); }
+
+    .material-icon {
+      font-size: clamp(28px, 4vw, 48px);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .material-name {
+      font-family: var(--serif-jp);
+      font-size: clamp(14px, 1.8vw, 18px);
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .material-name-en {
+      font-family: var(--serif-en);
+      font-size: 11px;
+      font-style: italic;
+      color: var(--red);
+      letter-spacing: 0.2em;
+    }
+    .material-desc {
+      margin-top: 12px;
+      font-family: var(--sans-jp);
+      font-size: 11px;
+      font-weight: 100;
+      line-height: 1.9;
+      color: var(--cream-dim);
+    }
+    .material-border {
+      position: absolute; bottom: 0; left: 20%; right: 20%;
+      height: 1px;
+      background: rgba(196,147,90,0.1);
+    }
+
+    /* ===== ORDER / CONTACT ===== */
+    #order {
+      padding: var(--spacing-xl) 0;
+      background: var(--iron);
+      position: relative;
+      overflow: hidden;
+    }
+    #order::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(139,26,26,0.08) 0%, transparent 70%);
+    }
+
+    .order-inner {
+      position: relative; z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+
+    .order-title {
+      font-family: var(--serif-jp);
+      font-size: clamp(28px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.3;
+    }
+    .order-body {
+      font-family: var(--sans-jp);
+      font-size: clamp(13px, 1.5vw, 15px);
+      font-weight: 100;
+      line-height: 2.4;
+      color: var(--cream-dim);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .order-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin: var(--spacing-md) 0;
+      text-align: left;
+    }
+    .order-info-item {
+      padding: 24px 32px;
+      background: var(--iron-soft);
+    }
+    .order-info-label {
+      font-family: var(--sans-jp);
+      font-size: 9px;
+      font-weight: 100;
+      letter-spacing: 0.5em;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .order-info-value {
+      font-family: var(--serif-jp);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--cream);
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: var(--spacing-md);
+      padding: 20px 64px;
+      border: 1px solid var(--red);
+      color: var(--cream);
+      font-family: var(--sans-jp);
+      font-size: 12px;
+      font-weight: 100;
+      letter-spacing: 0.6em;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s ease;
+      cursor: none;
+    }
+    .cta-button::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--red);
+      transform: translateX(-101%);
+      transition: transform 0.4s ease;
+    }
+    .cta-button:hover::before { transform: translateX(0); }
+    .cta-button span { position: relative; z-index: 1; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: var(--spacing-lg) 0 clamp(32px, 5vw, 48px);
+      background: var(--iron-mid);
+      border-top: 1px solid rgba(139,26,26,0.15);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: clamp(32px, 4vw, 64px);
+    }
+
+    .footer-brand-name {
+      font-family: var(--serif-jp);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-brand-en {
+      font-family: var(--serif-en);
+      font-size: 11px;
+      font-style: italic;
+      color: var(--red);
+      letter-spacing: 0.3em;
+      margin-bottom: 20px;
+    }
+    .footer-brand-desc {
+      font-family: var(--sans-jp);
+      font-size: 11px;
+      font-weight: 100;
+      line-height: 2;
+      color: var(--cream-dim);
+    }
+
+    .footer-col-title {
+      font-family: var(--sans-jp);
+      font-size: 9px;
+      font-weight: 100;
+      letter-spacing: 0.6em;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      font-family: var(--sans-jp);
+      font-size: 12px;
+      font-weight: 100;
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--cream); }
+
+    .footer-contact p {
+      font-family: var(--sans-jp);
+      font-size: 12px;
+      font-weight: 100;
+      line-height: 2;
+      color: var(--cream-dim);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px clamp(24px, 6vw, 80px) 0;
+      border-top: 1px solid rgba(196,147,90,0.08);
+      margin-top: var(--spacing-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy {
+      font-family: var(--serif-en);
+      font-size: 11px;
+      color: rgba(196,147,90,0.3);
+      letter-spacing: 0.2em;
+    }
+    .footer-mark {
+      font-family: var(--serif-jp);
+      font-size: 13px;
+      color: rgba(139,26,26,0.4);
+    }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Delay utilities */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .manifesto-grid { grid-template-columns: 1fr; }
+      .manifesto-jp-title { writing-mode: horizontal-tb; height: auto; }
+      .story-grid { grid-template-columns: 1fr; }
+      .story-grid.reverse { direction: ltr; }
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .process-timeline::before { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .craftspeople-grid { grid-template-columns: 1fr; }
+      .materials-grid { grid-template-columns: repeat(2, 1fr); }
+      .order-info-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      土州勝秀
+      <span>DOSHU KATSUHIDE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#manifesto">物語</a></li>
+      <li><a href="#process">工程</a></li>
+      <li><a href="#products">製品</a></li>
+      <li><a href="#craftspeople">職人</a></li>
+      <li><a href="#order">注文</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line"></div>
+
+    <!-- Sparks -->
+    <div class="sparks" id="sparks"></div>
+
+    <div class="hero-content">
+      <p class="hero-kana">どすしゅう　かつひで</p>
+      <h1 class="hero-title">土州<span class="red-char">勝</span>秀</h1>
+      <p class="hero-subtitle-en">Doshu Katsuhide · Est. 1920s · Shimanto, Kōchi</p>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">百年の火を、山へ還す</p>
+    </div>
+
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+
+    <div class="hero-year">SINCE 1920s — 四万十町十川</div>
+  </section>
+
+  <!-- ===== MANIFESTO ===== -->
+  <section id="manifesto">
+    <div class="section-inner">
+      <div class="manifesto-grid">
+        <div class="reveal-left">
+          <p class="manifesto-label">OUR PHILOSOPHY</p>
+          <div class="manifesto-jp-title">百年<br>の火</div>
+        </div>
+        <div class="manifesto-text reveal">
+          <h2 class="manifesto-lead">
+            山に入る者が、<br>
+            <em>命を預ける</em>刃がある。
+          </h2>
+          <p class="manifesto-body">
+            高知県四万十町十川。かつて九軒を数えた鍛冶屋が、今は一軒だけ残っている。<br><br>
+            「土州勝秀」は、先代の名と土佐の国（土州）を刻んだ銘号だ。
+            猟師が山を歩く。林業師が木を倒す。その一日一日の危険の中で、
+            手に収まる鉄が人の命を守ってきた。<br><br>
+            私たちは価格ではなく、<strong>哲学に値段をつける</strong>。
+            見えない場所に施した手間、魔を払う赤、
+            一発勝負の魂の刻印——それが土州勝秀の正価だ。
+          </p>
+          <div class="manifesto-stat-row">
+            <div class="stat">
+              <span class="stat-num">100<small style="font-size:0.5em;color:var(--cream-dim)">年</small></span>
+              <span class="stat-label">継承の歴史</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">5</span>
+              <span class="stat-label">月産上限（本）</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">60<small style="font-size:0.5em;color:var(--cream-dim)">日</small></span>
+              <span class="stat-label">一本の製作期間</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Red marquee band -->
+  <div class="red-band">
+    <div class="red-band-inner" id="marquee">
+      <span class="red-band-text">DOSHU KATSUHIDE</span><div class="red-band-dot"></div>
+      <span class="red-band-text">土州勝秀</span><div class="red-band-dot"></div>
+      <span class="red-band-text">SINCE 1920s</span><div class="red-band-dot"></div>
+      <span class="red-band-text">四万十より</span><div class="red-band-dot"></div>
+      <span class="red-band-text">HANDCRAFTED IN SHIMANTO</span><div class="red-band-dot"></div>
+      <span class="red-band-text">百年の鍛冶</span><div class="red-band-dot"></div>
+      <span class="red-band-text">DOSHU KATSUHIDE</span><div class="red-band-dot"></div>
+      <span class="red-band-text">土州勝秀</span><div class="red-band-dot"></div>
+      <span class="red-band-text">SINCE 1920s</span><div class="red-band-dot"></div>
+      <span class="red-band-text">四万十より</span><div class="red-band-dot"></div>
+      <span class="red-band-text">HANDCRAFTED IN SHIMANTO</span><div class="red-band-dot"></div>
+      <span class="red-band-text">百年の鍛冶</span><div class="red-band-dot"></div>
+    </div>
+  </div>
+
+  <!-- ===== STORY 01: 鞘の極意 ===== -->
+  <section class="story-section">
+    <div class="section-inner">
+      <div class="story-grid">
+        <div class="reveal-left">
+          <span class="story-number">01</span>
+          <p class="story-label">THE WAY OF THE SHEATH</p>
+          <h2 class="story-title">日本刀と<br>同じ鞘</h2>
+          <p class="story-body">
+            山を歩く猟師は、鞘の<strong>カタカタという音</strong>を嫌う。
+            音は獲物を逃がし、時として危険を知らせる機会を奪う。<br><br>
+            だから土州勝秀の鞘は、朴の木（ホオノキ）を削り出し、
+            日本刀の拵えと全く同じ工法で仕上げる。
+            刃を収めた瞬間の<strong>「カチン」</strong>という音——
+            その一音に、すべての精度が宿っている。<br><br>
+            ミリ以下の差が、命の安全を左右する。
+            だからこそ、妥協しない。
+          </p>
+        </div>
+        <div class="story-visual reveal-right">
+          <div class="visual-frame visual-sheath">
+            <div class="sheath-detail"></div>
+            <div class="sheath-lines"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STORY 02: 魔除けの赤 ===== -->
+  <section class="story-section">
+    <div class="section-inner">
+      <div class="story-grid reverse">
+        <div class="reveal-right">
+          <span class="story-number">02</span>
+          <p class="story-label">THE WARDING RED</p>
+          <h2 class="story-title">魔除けの<br>赤</h2>
+          <p class="story-body">
+            刃の溝（火）には、赤い色が入っている。<br><br>
+            手間が増える。工程が複雑になる。それでも入れる。
+            それは土州勝秀が代々受け継いできた<strong>矜持</strong>だ。<br><br>
+            「山に入る者を、魔から守る」——
+            その祈りを込めた赤は、利便や効率とは全く別の次元にある。
+            見えない意味を込める職人にしか、
+            この刃は作れない。
+          </p>
+        </div>
+        <div class="story-visual reveal-left">
+          <div class="visual-frame visual-red-groove">
+            <div class="blade-shape"></div>
+            <div class="blade-groove"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STORY 03: 銘切りの魂 ===== -->
+  <section class="story-section">
+    <div class="section-inner">
+      <div class="story-grid">
+        <div class="reveal-left">
+          <span class="story-number">03</span>
+          <p class="story-label">THE SOUL OF THE MARK</p>
+          <h2 class="story-title">一発勝負の<br>魂の刻印</h2>
+          <p class="story-body">
+            「土州勝秀」の銘は、修正できない。<br><br>
+            二代目・松村幸作が長年の鍛冶仕事の中で体に刻み込んだ
+            <strong>「トントントン」</strong>という打刻のリズム——
+            そのリズムを三代目の傍らで学んだのは、
+            三代目の妻・未来さんだった。<br><br>
+            手彫り一発勝負。失敗すれば、その刃は傷物になる。
+            だから未来さんの一打に、百年の緊張が宿る。
+            その銘があるとき、刃は<strong>作品</strong>になる。
+          </p>
+        </div>
+        <div class="story-visual reveal-right">
+          <div class="visual-frame visual-stamp">
+            <div class="stamp-marks">
+              <span class="stamp-char" style="--sd:0.5s">土</span>
+              <span class="stamp-char red" style="--sd:0.9s">州</span>
+              <span class="stamp-char" style="--sd:1.3s">勝</span>
+              <span class="stamp-char" style="--sd:1.7s">秀</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STORY 04: 見えない手間 ===== -->
+  <section class="story-section">
+    <div class="section-inner">
+      <div class="story-grid reverse">
+        <div class="reveal-right">
+          <span class="story-number">04</span>
+          <p class="story-label">THE INVISIBLE CARE</p>
+          <h2 class="story-title">見えない<br>場所の手間</h2>
+          <p class="story-body">
+            柄を作る際、刃を通す穴をドリルで開ける。
+            どれだけ精密に開けても、わずかな隙間が生まれることがある。<br><br>
+            土州勝秀はその隙間を、<strong>同じ木の削りくず</strong>で埋める。
+            市販の接着剤でも、パテでもない。
+            同じ素材、同じ木肌で、見えないように、
+            まるで最初からそこに空間がなかったかのように塞ぐ。<br><br>
+            誰も気づかない。使い手には決して見えない。
+            それでも手を抜かない——それが職人の倫理だ。
+          </p>
+        </div>
+        <div class="story-visual reveal-left">
+          <div class="visual-frame visual-handle">
+            <div class="handle-shape"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STORY 05: 槐の柄 ===== -->
+  <section class="story-section">
+    <div class="section-inner">
+      <div class="story-grid">
+        <div class="reveal-left">
+          <span class="story-number">05</span>
+          <p class="story-label">THE WOOD OF FORTUNE</p>
+          <h2 class="story-title">縁起木・槐と<br>究極のフォルム</h2>
+          <p class="story-body">
+            柄に使う木は、縁起の良い<strong>槐（えんじゅ）</strong>の木を選ぶ。<br><br>
+            槐は古来より魔を払い、幸運を招く木として珍重されてきた。
+            その木が持つ固さと木目、独特のしなやかさが、
+            素手で握ったとき「すっぽ抜けない」究極のフォルムを生む。<br><br>
+            山桑、桜、朴——どれも乾燥保存し、最良の状態で使う。
+            木材一つひとつの個性を読み、刃と対話しながら柄を選ぶ。
+            量産には、絶対にできないことだ。
+          </p>
+        </div>
+        <div class="story-visual reveal-right">
+          <div class="visual-frame" style="background: linear-gradient(160deg, #1a1208 0%, #0e0c09 100%); display:flex; align-items:center; justify-content:center;">
+            <div style="text-align:center; position:relative; z-index:2;">
+              <div style="font-size:clamp(48px,8vw,96px); line-height:1; color:var(--gold-light); font-family:var(--serif-jp); font-weight:700; text-shadow: 0 0 40px rgba(196,147,90,0.3);">槐</div>
+              <div style="font-family:var(--serif-en); font-size:14px; font-style:italic; color:var(--red); letter-spacing:0.3em; margin-top:12px;">Enju · Styphnolobium japonicum</div>
+              <div style="font-family:var(--sans-jp); font-size:11px; font-weight:100; color:var(--cream-dim); margin-top:16px; letter-spacing:0.2em;">縁起の木 · 魔除け · 長寿</div>
+            </div>
+            <div style="position:absolute; inset:0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(196,147,90,0.08) 0%, transparent 70%);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section id="process">
+    <div class="section-inner">
+      <div class="process-header">
+        <span class="section-label-en reveal">MANUFACTURING PROCESS</span>
+        <h2 class="section-title-jp reveal delay-1">一本の鉈が生まれるまで</h2>
+        <p class="section-subtitle reveal delay-2">丸太の割り出しから、銘の刻印まで。すべてを一棟の工房で。</p>
+      </div>
+      <div class="process-timeline reveal">
+        <div class="process-step">
+          <div class="process-step-num">01</div>
+          <h3 class="process-step-title">鋼の選定</h3>
+          <p class="process-step-desc">半鋼以上の鋼材を選び、叩く前に素材の癖を見極める</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">02</div>
+          <h3 class="process-step-title">火造り・成形</h3>
+          <p class="process-step-desc">炉で熱し、ハンマーで叩いて形をつくる。火の色で温度を読む</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">03</div>
+          <h3 class="process-step-title">研ぎ・仕上げ</h3>
+          <p class="process-step-desc">荒砥から仕上げまで段階を経て、山で使える切れ味へ</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">04</div>
+          <h3 class="process-step-title">柄・鞘づくり</h3>
+          <p class="process-step-desc">木材を手で削り、刃に合わせた専用の柄と鞘を仕立てる</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">05</div>
+          <h3 class="process-step-title">銘切り</h3>
+          <p class="process-step-desc">「土州勝秀」の銘を手彫り一発勝負で刻み、完成とする</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section id="products">
+    <div class="section-inner">
+      <div class="process-header">
+        <span class="section-label-en reveal">PRODUCTS</span>
+        <h2 class="section-title-jp reveal delay-1">土州勝秀の刃</h2>
+        <p class="section-subtitle reveal delay-2">月産五本。受注制作。あなたのための一本を打つ。</p>
+      </div>
+      <div class="products-grid">
+
+        <!-- 剣鉈 -->
+        <div class="product-card reveal delay-1">
+          <div class="product-visual pv-ken">
+            <div class="kennaata-blade"></div>
+            <div class="kennaata-groove"></div>
+            <div class="kennaata-handle"></div>
+            <div class="kennaata-sheath"></div>
+          </div>
+          <div class="product-info">
+            <p class="product-type">HUNTING BLADE</p>
+            <h3 class="product-name">剣鉈</h3>
+            <p class="product-name-en">Ken-nata · Double-edged Hunting Machete</p>
+            <p class="product-desc">
+              猟師が山に入るとき、腰に提げる剣鉈。
+              獲物の解体から、身を守る護身まで、一本が担う。
+              朴材の鞘は日本刀と同じ工法で削り出し、
+              「カチン」と鳴る精度で収まる。
+              刃の溝には魔除けの赤。
+              持ち手は槐か山桑。あなたの手の形に合わせて削る。
+            </p>
+            <div class="product-meta">
+              <div class="meta-item">
+                <span class="meta-label">全長</span>
+                <span class="meta-value">約 330mm〜</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">刃長</span>
+                <span class="meta-value">約 6寸（180mm〜）</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">納期</span>
+                <span class="meta-value">60〜90日</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 腰鉈 -->
+        <div class="product-card reveal delay-2">
+          <div class="product-visual pv-koshi" style="display:flex; align-items:center; justify-content:center;">
+            <div style="position:relative; width:80%; height:80%;">
+              <!-- Koshinata CSS art -->
+              <div style="position:absolute; left:0; right:20%; top:15%; bottom:30%; background:linear-gradient(150deg,#5a5450 0%,#3a3530 40%,#6a6460 70%,#2e2a24 100%); clip-path:polygon(0 30%, 75% 0, 92% 50%, 75% 100%, 0 70%); box-shadow: inset -6px 0 16px rgba(0,0,0,0.6);"></div>
+              <div style="position:absolute; left:0; right:45%; top:46%; bottom:47%; background:var(--red); clip-path:polygon(0 0,55% 0,70% 50%,55% 100%,0 100%); box-shadow:0 0 12px rgba(196,30,30,0.8);"></div>
+              <div style="position:absolute; right:0; left:65%; top:25%; bottom:25%; background:linear-gradient(90deg,#4a3218 0%,#7a5230 50%,#4a3218 100%); border-radius:4px; box-shadow:inset 0 0 8px rgba(0,0,0,0.5);"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <p class="product-type">FORESTRY BLADE</p>
+            <h3 class="product-name">腰鉈</h3>
+            <p class="product-name-en">Koshi-nata · Single-edged Forestry Machete</p>
+            <p class="product-desc">
+              山師が木を伐り、枝を払い、道を作る。
+              腰に提げて一日山を歩く。そのための一本。
+              片刃の設計は繊細な作業に向き、
+              重心のバランスを一本ずつ調整する。
+              刃の溝には同じく魔除けの赤。
+              左利き用も受注制作可能。
+            </p>
+            <div class="product-meta">
+              <div class="meta-item">
+                <span class="meta-label">形状</span>
+                <span class="meta-value">片刃</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">利き手対応</span>
+                <span class="meta-value">左右どちらも可</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">納期</span>
+                <span class="meta-value">60〜90日</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Note -->
+        <div class="product-note reveal">
+          <p>
+            土州勝秀の鉈は、すべて<strong>受注生産・一本仕立て</strong>です。<br>
+            月産上限は五本。あなたの手に合わせた刃を打ちます。<br>
+            価格・仕様は下記よりお問い合わせください。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CRAFTSPEOPLE ===== -->
+  <section id="craftspeople">
+    <div class="section-inner">
+      <div class="process-header">
+        <span class="section-label-en reveal">THE CRAFTSPEOPLE</span>
+        <h2 class="section-title-jp reveal delay-1">火を継ぐ者たち</h2>
+      </div>
+      <div class="craftspeople-grid">
+
+        <div class="crafter-card reveal delay-1">
+          <div class="crafter-avatar">匠</div>
+          <p class="crafter-gen">SECOND GENERATION</p>
+          <h3 class="crafter-name">松村 幸作</h3>
+          <p class="crafter-role">二代目 ｜ 鍛造・総括</p>
+          <p class="crafter-quote">
+            「鍛冶屋の世界は奥が深いんぞぉ。<br>
+            最近になってわかってきたわ。」<br>
+            <br>
+            「職人は少し不器用なくらいがいい。<br>
+            不器用さが、力を抜かん姿勢に繋がる。」
+          </p>
+        </div>
+
+        <div class="crafter-card reveal delay-2">
+          <div class="crafter-avatar">継</div>
+          <p class="crafter-gen">THIRD GENERATION</p>
+          <h3 class="crafter-name">菊池 祐</h3>
+          <p class="crafter-role">三代目 ｜ 鍛造・制作</p>
+          <p class="crafter-quote">
+            神奈川県横須賀市出身。<br>
+            2015年、地域おこし協力隊として<br>
+            四万十町に移住。<br>
+            <br>
+            工業高校卒のものづくり技術者が、<br>
+            百年の炎を継いだ。
+          </p>
+        </div>
+
+        <div class="crafter-card reveal delay-3">
+          <div class="crafter-avatar" style="color:var(--red);">銘</div>
+          <p class="crafter-gen">THE SIGNATURE</p>
+          <h3 class="crafter-name">菊池 未来</h3>
+          <p class="crafter-role">銘切り師 ｜ 鞘・仕上げ</p>
+          <p class="crafter-quote">
+            二代目の「トントントン」という<br>
+            打刻のリズムを体に刻み込んだ唯一の人。<br>
+            <br>
+            一発勝負の手彫りで「土州勝秀」を刻む。<br>
+            その一打に、百年の緊張が宿る。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MATERIALS ===== -->
+  <section id="materials">
+    <div class="section-inner">
+      <div class="process-header">
+        <span class="section-label-en reveal">MATERIALS</span>
+        <h2 class="section-title-jp reveal delay-1">山から選んだ素材</h2>
+      </div>
+      <div class="materials-grid reveal">
+        <div class="material-tile">
+          <span class="material-icon">🪵</span>
+          <h3 class="material-name">槐</h3>
+          <p class="material-name-en">Enju · Japanese Pagoda Tree</p>
+          <p class="material-desc">縁起の良い吉祥木。すっぽ抜けない究極のフォルムを持つ</p>
+          <div class="material-border"></div>
+        </div>
+        <div class="material-tile">
+          <span class="material-icon">🌸</span>
+          <h3 class="material-name">朴の木</h3>
+          <p class="material-name-en">Ho · Japanese Bigleaf Magnolia</p>
+          <p class="material-desc">鞘に使用。柔らかさと強度のバランスが刃を守る</p>
+          <div class="material-border"></div>
+        </div>
+        <div class="material-tile">
+          <span class="material-icon">🌳</span>
+          <h3 class="material-name">山桑</h3>
+          <p class="material-name-en">Yama-guwa · Wild Mulberry</p>
+          <p class="material-desc">美しい木目と硬さを持つ。経年で深みを増す</p>
+          <div class="material-border"></div>
+        </div>
+        <div class="material-tile">
+          <span class="material-icon">⚒️</span>
+          <h3 class="material-name">半鋼以上</h3>
+          <p class="material-name-en">High Carbon Steel</p>
+          <p class="material-desc">半鋼を超える鋼材を選定。数十年使える刃を保証する</p>
+          <div class="material-border"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ORDER ===== -->
+  <section id="order">
+    <div class="order-inner">
+      <span class="section-label-en reveal">ORDER & INQUIRY</span>
+      <h2 class="order-title reveal delay-1">
+        あなたの一本を、<br>打ちに行く。
+      </h2>
+      <p class="order-body reveal delay-2">
+        土州勝秀の鉈は、すべて受注制作です。<br>
+        用途・手の大きさ・利き手・使う木の種類——<br>
+        ご要望をお聞かせください。<br>
+        月産五本の枠に、あなたの一本を。
+      </p>
+
+      <div class="order-info-grid reveal delay-3">
+        <div class="order-info-item">
+          <p class="order-info-label">工房</p>
+          <p class="order-info-value">高知県高岡郡四万十町十川233-2</p>
+        </div>
+        <div class="order-info-item">
+          <p class="order-info-label">対面販売</p>
+          <p class="order-info-value">毎週日曜・祝日｜道の駅とおわ</p>
+        </div>
+        <div class="order-info-item">
+          <p class="order-info-label">電話</p>
+          <p class="order-info-value">080-6554-0980</p>
+        </div>
+        <div class="order-info-item">
+          <p class="order-info-label">納期</p>
+          <p class="order-info-value">受注より60〜90日</p>
+        </div>
+      </div>
+
+      <a href="tel:080-6554-0980" class="cta-button reveal delay-4">
+        <span>お問い合わせ・ご注文</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand-name">土州勝秀</p>
+        <p class="footer-brand-en">Doshu Katsuhide</p>
+        <p class="footer-brand-desc">
+          高知県四万十より。<br>
+          百年の火を継ぐ、鉈専門の鍛冶屋。<br>
+          山に生き、山に返る刃を打ち続ける。
+        </p>
+      </div>
+      <div>
+        <p class="footer-col-title">NAVIGATION</p>
+        <ul class="footer-links">
+          <li><a href="#manifesto">百年の哲学</a></li>
+          <li><a href="#process">製作工程</a></li>
+          <li><a href="#products">製品</a></li>
+          <li><a href="#craftspeople">職人</a></li>
+          <li><a href="#materials">素材</a></li>
+          <li><a href="#order">注文・問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <p class="footer-col-title">CONTACT</p>
+        <p>
+          〒786-0301<br>
+          高知県高岡郡四万十町十川233-2<br>
+          <br>
+          TEL: 080-6554-0980<br>
+          <br>
+          対面販売:<br>
+          毎週日曜・祝日<br>
+          道の駅とおわ
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© Doshu Katsuhide Blacksmith · Shimanto, Kōchi, Japan</p>
+      <p class="footer-mark">土州勝秀</p>
+    </div>
+  </footer>
+
+  <script>
+    // ===== CUSTOM CURSOR =====
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
+    });
+
+    (function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animateRing);
+    })();
+
+    // ===== NAV SCROLL =====
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ===== SPARKS =====
+    const sparksEl = document.getElementById('sparks');
+    const heroEl   = document.getElementById('hero');
+
+    function createSpark() {
+      const s = document.createElement('div');
+      s.className = 'spark';
+      const tx = (Math.random() - 0.5) * 300;
+      const ty = -(100 + Math.random() * 300);
+      const dur = 1.2 + Math.random() * 1.8;
+      const delay = Math.random() * 0.5;
+      const left = 35 + Math.random() * 30;
+
+      s.style.cssText = `
+        left: ${left}%;
+        --tx: ${tx}px;
+        --ty: ${ty}px;
+        --dur: ${dur}s;
+        --delay: ${delay}s;
+      `;
+      sparksEl.appendChild(s);
+      setTimeout(() => s.remove(), (dur + delay + 0.1) * 1000);
+    }
+
+    setInterval(createSpark, 200);
+
+    // ===== SCROLL REVEAL =====
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ===== STAMP ANIMATION RE-TRIGGER =====
+    const stampSection = document.querySelector('.visual-stamp');
+    const stampObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const chars = entry.target.querySelectorAll('.stamp-char');
+          chars.forEach(c => {
+            c.style.animation = 'none';
+            c.offsetHeight; // reflow
+            c.style.animation = '';
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    if (stampSection) stampObserver.observe(stampSection);
+
+    // ===== PARALLAX HERO =====
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent && y < window.innerHeight) {
+        heroContent.style.transform = `translateY(${y * 0.3}px)`;
+        heroContent.style.opacity = 1 - y / (window.innerHeight * 0.7);
+      }
+    });
+
+    // ===== SMOOTH ANCHOR SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
